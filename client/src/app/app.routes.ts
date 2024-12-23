@@ -14,20 +14,20 @@ import { preventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.gu
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {
-        path: '', 
+        path: '',
         runGuardsAndResolvers: 'always',
         canActivate: [authGuard],
-        children: [ 
+        children: [
             {path: 'members', component: MemberListComponent},
             {path: 'members/:username', component: MemberDetailComponent},
-            {path: 'member/:edit', component: MemberEditComponent, 
-                canDeactivate:[preventUnsavedChangesGuard]},
+            {path: 'member/edit', component: MemberEditComponent, 
+                canDeactivate: [preventUnsavedChangesGuard]},
             {path: 'lists', component: ListsComponent},
-            {path: 'messages', component: MessagesComponent}
+            {path: 'messages', component: MessagesComponent},
         ]
     },
     {path: 'errors', component: TestErrorsComponent},
     {path: 'not-found', component: NotFoundComponent},
     {path: 'server-error', component: ServerErrorComponent},
-    {path: '**', component: HomeComponent, pathMatch: 'full'}
+    {path: '**', component: HomeComponent, pathMatch: 'full'},
 ];

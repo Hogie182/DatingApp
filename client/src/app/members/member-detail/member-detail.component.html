@@ -45,10 +45,12 @@
                     {{member.interests}}
                 </tab>
                 <tab heading="Photos" #photoTab="tab">
-                    @if (photoTab.active) {<gallery [items]="images"
-                    class="gallery"
-                    >
-                </gallery>}
+                    @if (photoTab.active) {
+                        <gallery 
+                            [items]="images"
+                            itemAutosize="true"
+                            class="gallery"
+                        ></gallery>}
                 </tab>
                 <tab heading="Messages">
                     <p>Messages go heere</p>

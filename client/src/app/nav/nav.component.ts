@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -22,7 +22,7 @@ export class NavComponent {
     console.log(this.model)
     this.accountService.login(this.model).subscribe({
       next: _ => {
-        this.router.navigateByUrl('/memebers')
+        this.router.navigateByUrl('/members')
       },
       error: error => this.toastr.error(error.error) 
       })     
