@@ -6,8 +6,17 @@ namespace API.DTOs;
 public class RegisterDTO
 {
     [Required]
-    [MaxLength(100)]
     public string Username { get; set;} = string.Empty;
+
+    [Required] public string? KnownAs { get; set;}
+    
+    [Required] public string? Gender { get; set;}
+    
+    [Required] public DateOnly DateOfBirth { get; set;}
+    
+    [Required] public string? City { get; set;}
+
+    [Required] public string? Country { get; set;}
     
     [Required]
     [StringLength(8, MinimumLength = 4)]
