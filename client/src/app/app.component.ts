@@ -10,7 +10,7 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, NavComponent, HomeComponent, NgxSpinnerComponent]
+    imports: [RouterOutlet, NavComponent, NgxSpinnerComponent]
 })
 export class AppComponent implements OnInit {
   private accountService = inject(AccountService);
@@ -23,8 +23,6 @@ export class AppComponent implements OnInit {
     const userString = localStorage.getItem('user');
     if (!userString) return;
     const user = JSON.parse(userString);
-    this.accountService.currentUser.set(user);
+    this.accountService.setCurrentUser(user);
   }
-
-
 }
