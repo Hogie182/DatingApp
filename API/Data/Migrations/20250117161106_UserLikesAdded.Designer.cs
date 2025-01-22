@@ -60,7 +60,7 @@ namespace API.Data.Migrations
                     b.Property<string>("LookingFor")
                         .HasColumnType("TEXT");
 
-                    b.Property<byte[]>("PasswaordHash")
+                    b.Property<byte[]>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("BLOB");
 

@@ -23,13 +23,13 @@ public class AccountController(DataContext context, ITokenService tokenService, 
         var user = mapper.Map<AppUser>(registerDTO);
 
         user.UserName = registerDTO.Username.ToLower();
-        user.PasswaordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password));
+        user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password));
         user.PasswordSalt = hmac.Key;
 
         // var user = new AppUser
         // {
         //     UserName = registerDTO.Username.ToLower(),
-        //     PasswaordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password)),
+        //     PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password)),
         //     PasswordSalt = hmac.Key
         // };
 
@@ -61,7 +61,7 @@ public class AccountController(DataContext context, ITokenService tokenService, 
         var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDTO.Password));
         for (int i = 0; i < computedHash.Length; i++)
         {
-            if (computedHash[i] != user.PasswaordHash[i]) return Unauthorized("invalid password");
+            if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("invalid password");
         }
         return new UserDTO
         {

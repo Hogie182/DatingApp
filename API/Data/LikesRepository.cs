@@ -57,7 +57,7 @@ public class LikesRepository(DataContext context, IMapper mapper) : ILikesReposi
 
                 query = likes
                 .Where(like => like.SourceUserId == likesParams.UserId && likeIds.Contains(like.LikedUserId))
-                .Select(like => like.SourceUserId)
+                .Select(like => like.SourceUser)
                 .ProjectTo<MemberDTO>(mapper.ConfigurationProvider);
                 break;
         }

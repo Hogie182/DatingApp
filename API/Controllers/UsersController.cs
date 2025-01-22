@@ -104,7 +104,7 @@ public class UsersController(IUserRepository userRepository, IMapper mapper, IPh
             return BadRequest("Cannot use this as main photo");
         }
         
-        var currentMain = user.Photos.FirstOrDefault(x => x.IsMain);
+        var currentMain = user?.Photos.FirstOrDefault(x => x.IsMain);
         if (currentMain != null)
         {
             currentMain.IsMain = false;
