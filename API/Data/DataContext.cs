@@ -9,9 +9,10 @@ public class DataContext(DbContextOptions options) : IdentityDbContext<AppUser, 
 IdentityUserClaim<int>, AppUserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>,
 IdentityUserToken<int>>(options)
 {
-    public new required DbSet<AppUser> Users { get; set; }
-    public required DbSet<UserLike> Likes { get; set; }
-    public required DbSet<Message> Messages { get; set; }
+    public DbSet<UserLike> Likes { get; set; }
+    public DbSet<Message> Messages { get; set; }
+    public DbSet<Group> Groups { get; set; }
+    public DbSet<Connection> Connections { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
